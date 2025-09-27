@@ -347,9 +347,8 @@ docker compose down -v
 │   └── queries.sql
 ├── producer/
 │   └── producer.py
-├── connectors/
-│   ├── orders-sink.json
-│   └── metrics-sink.json
+├── orders-sink.json --> conector 
+├── metrics-sink.json --> conector 
 └── README.md  ← (este archivo)
 ```
 
