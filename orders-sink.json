@@ -1,0 +1,10 @@
+{
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "topics": "orders_enriched_avro",
+    "connection.url": "jdbc:postgresql://postgres:5432/streaming",
+    "connection.user": "postgres",
+    "connection.password": "postgres",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "insert.mode": "insert"
+}
