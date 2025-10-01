@@ -1,16 +1,16 @@
 -- 1) Stream de entrada desde el topic JSON 'orders'
 CREATE STREAM ORDERS_RAW (
-  order_id STRING,
-  ts BIGINT,
-  customer STRING,
-  product_id STRING,
-  product_name STRING,
-  quantity INT,
-  price DOUBLE,
-  inventory_left INT
+    order_id STRING,
+    ts BIGINT,
+    customer STRING,
+    product_id STRING,
+    product_name STRING,
+    quantity INT,
+    price DOUBLE,
+    inventory_left INT
 ) WITH (
-  KAFKA_TOPIC='orders',
-  VALUE_FORMAT='JSON'
+    KAFKA_TOPIC='orders',
+    VALUE_FORMAT='JSON'
 );
 
 -- 2) Enriquecido a AVRO (para Connect) + timestamp en ms y en ISO
@@ -44,7 +44,7 @@ WHERE inventory_left <= 10
 EMIT CHANGES;
 
 -- 4) Métricas por minuto (tabla materializada en AVRO)
---    👇 clave compuesta => especificamos KEY_FORMAT que soporte schema
+--    clave compuesta => especificamos KEY_FORMAT que soporte schema
 CREATE TABLE SALES_PER_MIN_AVRO
     WITH (KAFKA_TOPIC='sales_per_min_avro', VALUE_FORMAT='AVRO', KEY_FORMAT='JSON') AS
 SELECT
